@@ -1,7 +1,10 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.0)
 project(pose_graph)
 
 add_definitions(-std=c++11)
+
+set(OpenCV_DIR "/opt/ros/kinetic/include/opencv-3.3.1-dev")
+
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   geometry_msgs
@@ -25,6 +28,8 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES tss_lib
 )
+
+find_package(OpenCV 3 REQUIRED)
 
 
 include_directories(

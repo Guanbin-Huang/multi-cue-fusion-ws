@@ -38,6 +38,8 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
     #${G2O_DEEPER_LOCAL_DIR}/lib
     #${G2O_EXTERNAL_DIR}/lib/Debug
     #${G2O_EXTERNAL_DIR}/lib
+    
+    /usr/local/lib
     ${G2O_SRRG_DIR}/lib/Debug
     ${G2O_SRRG_DIR}/lib
     ${G2O_ROOT}/lib/Debug
@@ -50,6 +52,7 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
   FIND_LIBRARY("${MYLIBRARY}_DEBUG"
     NAMES "g2o_${MYLIBRARYNAME}_d"
     PATHS
+    
     ~/Library/Frameworks
     /Library/Frameworks
     /usr/local/lib
@@ -59,6 +62,7 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
     /opt/local/lib
     /sw/local/lib
     /sw/lib
+
     )
   
   FIND_LIBRARY(${MYLIBRARY}
@@ -70,6 +74,7 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
     #${G2O_DEEPER_LOCAL_DIR}/lib
     #${G2O_EXTERNAL_DIR}/lib/Release
     #${G2O_EXTERNAL_DIR}/lib
+    
     ${G2O_SRRG_DIR}/lib/Release
     ${G2O_SRRG_DIR}/lib
     ${G2O_ROOT}/lib/Release
@@ -82,6 +87,7 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
   FIND_LIBRARY(${MYLIBRARY}
     NAMES "g2o_${MYLIBRARYNAME}"
     PATHS
+    
     ~/Library/Frameworks
     /Library/Frameworks
     /usr/local/lib

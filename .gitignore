@@ -1,6 +1,6 @@
 devel
 build
-
+logs
 
 *.o
 *.lst
@@ -13,3 +13,4 @@ build
 .vscode
 *.pyc
 *~
+.catkin_tools

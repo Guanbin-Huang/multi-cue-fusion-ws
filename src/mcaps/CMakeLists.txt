@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.0)
 project(flourish_mapping)
 
 SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -9,6 +9,8 @@ add_compile_options(-fPIC)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fpic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake_modules)
+# opencv
+set(OpenCV_DIR "/opt/ros/kinetic/include/opencv-3.3.1-dev")
 
 INCLUDE(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -23,6 +25,7 @@ ENDIF()
 
 find_package(G2O)
 find_package(SuiteSparse REQUIRED)
+
 
 # FIND_PACKAGE(CSparse)
 # IF(CSPARSE_FOUND)
@@ -40,6 +43,7 @@ find_package(SuiteSparse REQUIRED)
 #add_definitions(-Wall)
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
+
 find_package(catkin REQUIRED COMPONENTS qt_build roscpp cv_bridge image_transport sensor_msgs std_msgs rosbag pose_graph velodyne_msgs geodetic_utils
                                         )
 find_package(Boost REQUIRED COMPONENTS system)
@@ -65,6 +69,10 @@ if (OPENMP_FOUND)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
+# opencv
+find_package(OpenCV 3 REQUIRED)
+
+
 catkin_package(
   INCLUDE_DIRS include
   #LIBRARIES flourish_mapping_lib
@@ -73,6 +81,7 @@ catkin_package(
 )
 
 #include(${QT_USE_FILE})
+
 
 include_directories(include
   ${catkin_INCLUDE_DIRS}
@@ -85,6 +94,7 @@ include_directories(include
   ${PCL_INCLUDE_DIRS}
   $ENV{G2O_ROOT}
   ${CSPARSE_INCLUDE_DIR}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 
@@ -129,18 +139,20 @@ add_executable(flourish_mapping
   ${QT_FORMS_HPP}
   ${QT_MOC_HPP}
 )
+
 target_link_libraries(flourish_mapping
   ${QT_LIBRARIES}
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
   ${PCL_LIBRARIES}
   /usr/lib/x86_64-linux-gnu/libcxsparse.so.3.1.4
-  $ENV{G2O_ROOT}/lib/libg2o_core.so
-  $ENV{G2O_ROOT}/lib/libg2o_stuff.so
-  $ENV{G2O_ROOT}/lib/libg2o_csparse_extension.so
-  $ENV{G2O_ROOT}/lib/libg2o_types_slam2d.so
-  $ENV{G2O_ROOT}/lib/libg2o_types_slam3d.so
-  $ENV{G2O_ROOT}/lib/libg2o_solver_csparse.so
+  /usr/local/lib/libg2o_core.so
+  /usr/local/lib/libg2o_stuff.so
+  /usr/local/lib/libg2o_csparse_extension.so
+  /usr/local/lib/libg2o_types_slam2d.so
+  /usr/local/lib/libg2o_types_slam3d.so
+  /usr/local/lib/libg2o_solver_csparse.so
   yaml-cpp
+  ${OpenCV_LIBS}
 )
 
