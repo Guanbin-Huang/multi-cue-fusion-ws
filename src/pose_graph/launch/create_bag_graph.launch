@@ -1,0 +1,13 @@
+<launch>
+
+   <node pkg="pose_graph" type="build_graph" name="flourish_example_bag_graph" output="screen">
+        <param name="bagfile_path" value="/home/marco/bags/"/>
+        <param name="bagfile_name" value="bonirob_2016-05-11-11-47-26_19.bag"/>
+        <param name="output_graph_folder" value="/home/marco/bags/"/>
+        <param name="outfile_name" value="bonirob_2016-05-11-11-47-26_19.yaml"/>
+        <param name="odom_topic" value="/robot/odom"/>
+        <param name="gps_topic" value="/sensor/gps/leica530/fix"/>
+        <param name="camera_topic" value="/sensor/jai/bayer/image_raw_sync"/>
+  </node>
+
+</launch>

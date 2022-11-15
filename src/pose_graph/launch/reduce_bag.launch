@@ -1,0 +1,11 @@
+<launch>
+
+   <node pkg="pose_graph" type="reduce_graph" name="flourish_example_reduce_bag_graph" output="screen">
+        <param name="bagfile_path" value="/home/marco/bags_eschikon/"/>
+        <param name="bagfile_name" value="merged_full_sync.bag"/>
+        <param name="reduced_bagfile_name" value="merged_full_sync_reduced.bag"/>
+        <param name="graph_folder" value="/home/marco/bags_eschikon/"/>
+        <param name="graph_file_name" value="merged_sync_graph.yaml"/>
+  </node>
+
+</launch>
