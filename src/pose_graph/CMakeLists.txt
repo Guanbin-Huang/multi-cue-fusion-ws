@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(pose_graph)
 
+# SET(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic")
+
 add_definitions(-std=c++11)
 
 set(OpenCV_DIR "/opt/ros/kinetic/include/opencv-3.3.1-dev")
@@ -19,7 +22,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(Boost REQUIRED)
-#find_package(yaml-cpp REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
 find_package(PCL REQUIRED)
 add_definitions(${PCL_DEFINITIONS})
@@ -35,10 +38,13 @@ find_package(OpenCV 3 REQUIRED)
 include_directories(
   ${catkin_INCLUDE_DIRS}
   include
- # ${YAML_CPP_INCLUDE_DIR}
+  ${YAML_CPP_INCLUDE_DIR}
   ${Boost_INCLUDE_DIR}
   ${PCL_INCLUDE_DIRS}
 )
+message(status ": ${YAML_CPP_INCLUDE_DIR}")
+
+
 
 #link_directories(${Boost_LIBRARY_DIR})
 

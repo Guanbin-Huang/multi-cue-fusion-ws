@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(flourish_mapping)
 
+# SET(CMAKE_BUILD_TYPE Debug)
+
 SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #set(CMAKE_AUTOMOC ON)
 
 add_compile_options(-fPIC)
+
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fpic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic")
@@ -134,11 +137,20 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.cpp incl
 link_directories(${PCL_LIBRARY_DIRS})
 
 add_executable(flourish_mapping
+
   ${QT_SOURCES}
   ${QT_RESOURCES_CPP}
   ${QT_FORMS_HPP}
   ${QT_MOC_HPP}
 )
+message(status "--------------------------------------------")
+message(status "${QT_SOURCES}")
+message(status "${QT_RESOURCES_CPP}")
+message(status "${QT_FORMS_HPP}")
+message(status "${QT_MOC_HPP}")
+message(status "--------------------------------------------")
+
+
 
 target_link_libraries(flourish_mapping
   ${QT_LIBRARIES}

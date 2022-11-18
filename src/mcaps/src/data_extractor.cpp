@@ -3,7 +3,7 @@
 void DataExtractor::computeElevetionGrid(vector< Eigen::Vector3d >& grid, double z_offset)
 {
   std::ifstream inputfile;
-  inputfile.open(params_.elevation_map_file);
+  inputfile.open(params_.tss_maindir + "/" + params_.elevation_map_file);
   if (!inputfile.is_open()) {
     std::cerr << "***[error]: file path not valid. Error in opening ***" << std::endl;
     std::exit(-1);

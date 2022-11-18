@@ -14,3 +14,4 @@ logs
 *.pyc
 *~
 .catkin_tools
+*.bag

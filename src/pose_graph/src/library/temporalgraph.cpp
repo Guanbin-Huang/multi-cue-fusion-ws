@@ -1,4 +1,5 @@
 #include <pose_graph/temporalgraph.h>
+#include <iostream>
 
 using namespace std;
 
@@ -21,8 +22,10 @@ TSS::TSS(const string& graph_dir) {
   clear();
 
   pose_graph_dir_ = graph_dir;
+  pose_graph_dir_ += "/";
 //   pose_graph_dir_ += "/graphs/";
   bag_dir_ = graph_dir;
+  bag_dir_ += "/";
 //   bag_dir_ += "/bags/";
 
   boost::filesystem::path _dir1(pose_graph_dir_);
@@ -108,11 +111,12 @@ void TSS::save(const string& file_name) {
 void TSS::load(const string& yaml_file_name) {
   clear();
   YAML::Node in_yaml = YAML::LoadFile(pose_graph_dir_ + yaml_file_name);
+  std::cout << pose_graph_dir_ + yaml_file_name << std::endl;
 
   int node_size = in_yaml.size();
   ts_queue_.reserve(node_size);
-  for (int i = 0; i < node_size; i++) {
-    cout << "loading node " << i << " out of " << node_size << endl;
+  for (int i = 0; i < node_size; ++i) {
+    cout << "loading node " << "id-"<< i+1 << " out of " << node_size << endl;
     stringstream sst;
     sst << i;
     string sstr = sst.str();
@@ -122,6 +126,8 @@ void TSS::load(const string& yaml_file_name) {
     YAML::Node aux = n["position"];
     Eigen::Vector3d position(aux[0].as<double>(), aux[1].as<double>(),
                              aux[2].as<double>());
+
+    // std::cout << aux[0] << aux[1] << aux[2] << endl;
 
     aux = n["orientation"];
     Eigen::Quaterniond orientation(aux[0].as<double>(), aux[1].as<double>(),
@@ -207,6 +213,7 @@ void TSS::updadteHashTables(
 void TSS::setBag(string bag_in_name) {
   closeBag();
   computeHashTables();
+  std::cout << "xxxxxxxxxxxxxxxxxxxxxxxx  "<< bag_dir_ + bag_in_name << std::endl;
   bag_.open(bag_dir_ + bag_in_name, rosbag::bagmode::Read);
 }
 

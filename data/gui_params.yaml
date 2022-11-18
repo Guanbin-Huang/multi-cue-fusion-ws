@@ -1,0 +1,51 @@
+bag_filename: DatasetA_test.bag
+WO_topic: /robot/odom
+GPS_topic: /gps_cov/odom
+VO_topic: ""
+SVO_topic: /dso/odom
+GT_topic: /leica/odom
+JAI_RGB_topic: /sensor/camera/downJai/rgb/image_raw
+IMU_topic: /imu
+tss_maindir: /home/ubuntu/multi-cue-fusion-ws/data
+tss_filename: tss_datasetA_full.yaml
+CLOUD_topic: /velodyne_points
+GPS_calib: gps2odom.yaml
+VO_calib: cam2odom.yaml
+SVO_calib: visensor2odom.yaml
+GT_calib: leica2odom.yaml
+enable:
+  - true
+  - true
+  - false
+  - true
+enable_MA: true
+enable_elevation: false
+enable_ackerman: true
+enable_imu: true
+enable_velodyne: true
+WO_step: 0.3
+GPS_step: 0
+VO_step: 4.940656458412465e-324
+SVO_step: 0
+CLOUD_step: 2
+WO_scale_t: 2
+WO_scale_r: 20
+GPS_scale_txy: 0.03
+GPS_scale_tz: 0.4
+VO_scale_t: 3.469443094261423e-317
+VO_scale_r: 4.716263699646871e-317
+SVO_scale_t: 1
+SVO_scale_tz: 0.01
+SVO_scale_r: 5
+ACKERMAN_scale_t: 0.03
+ACKERMAN_scale_r: 99
+IMU_scale: 1
+CLOUD_scale: 10
+MA_radius: 1
+MA_scale: 1
+sw_scale: 1
+sw_size: 50
+elevation_scale: 10
+graph_filename: graph.g2o
+elevation_map_file: Eschikon_grid.txt
+out_folder: /home/ubuntu/multi-cue-fusion-ws/data/output/

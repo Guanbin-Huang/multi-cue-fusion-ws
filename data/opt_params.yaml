@@ -1,0 +1,3 @@
+in_filename: graph.g2o
+N_iterations: 8
+out_filename: optimized_graph.g2o
