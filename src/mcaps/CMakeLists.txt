@@ -1,16 +1,15 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(flourish_mapping)
 
-# SET(CMAKE_BUILD_TYPE Debug)
+SET(CMAKE_BUILD_TYPE Debug)
 
 SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
-#set(CMAKE_AUTOMOC ON)
 
 add_compile_options(-fPIC)
 
-
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fpic")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic  -g -O0")
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake_modules)
 # opencv
 set(OpenCV_DIR "/opt/ros/kinetic/include/opencv-3.3.1-dev")
@@ -26,7 +25,8 @@ ELSE()
   MESSAGE(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 ENDIF()
 
-find_package(G2O)
+# find_package(G2O)
+set(G2O_ROOT "/home/ubuntu/3rdparty/g2o-20170730")
 find_package(SuiteSparse REQUIRED)
 
 
@@ -143,12 +143,12 @@ add_executable(flourish_mapping
   ${QT_FORMS_HPP}
   ${QT_MOC_HPP}
 )
-message(status "--------------------------------------------")
-message(status "${QT_SOURCES}")
-message(status "${QT_RESOURCES_CPP}")
-message(status "${QT_FORMS_HPP}")
-message(status "${QT_MOC_HPP}")
-message(status "--------------------------------------------")
+# message(status "--------------------------------------------")
+# message(status "${QT_SOURCES}")
+# message(status "${QT_RESOURCES_CPP}")
+# message(status "${QT_FORMS_HPP}")
+# message(status "${QT_MOC_HPP}")
+# message(status "--------------------------------------------")
 
 
 
@@ -158,12 +158,18 @@ target_link_libraries(flourish_mapping
   ${Boost_LIBRARIES}
   ${PCL_LIBRARIES}
   /usr/lib/x86_64-linux-gnu/libcxsparse.so.3.1.4
-  /usr/local/lib/libg2o_core.so
-  /usr/local/lib/libg2o_stuff.so
-  /usr/local/lib/libg2o_csparse_extension.so
-  /usr/local/lib/libg2o_types_slam2d.so
-  /usr/local/lib/libg2o_types_slam3d.so
-  /usr/local/lib/libg2o_solver_csparse.so
+  # /usr/local/lib/libg2o_core.so
+  # /usr/local/lib/libg2o_stuff.so
+  # /usr/local/lib/libg2o_csparse_extension.so
+  # /usr/local/lib/libg2o_types_slam2d.so
+  # /usr/local/lib/libg2o_types_slam3d.so
+  # /usr/local/lib/libg2o_solver_csparse.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_core.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_stuff.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_csparse_extension.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_types_slam2d.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_types_slam3d.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_solver_csparse.so
   yaml-cpp
   ${OpenCV_LIBS}
 )

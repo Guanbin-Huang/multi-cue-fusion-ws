@@ -116,7 +116,7 @@ void TSS::load(const string& yaml_file_name) {
   int node_size = in_yaml.size();
   ts_queue_.reserve(node_size);
   for (int i = 0; i < node_size; ++i) {
-    cout << "loading node " << "id-"<< i+1 << " out of " << node_size << endl;
+    // cout << "loading node " << "id-"<< i+1 << " out of " << node_size << endl;
     stringstream sst;
     sst << i;
     string sstr = sst.str();

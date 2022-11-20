@@ -25,9 +25,9 @@ ELSE()
   MESSAGE(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 ENDIF()
 
-find_package(G2O)
+set(G2O_ROOT "/home/ubuntu/3rdparty")
 find_package(SuiteSparse REQUIRED)
-set(EIGEN3_INCLUDE_DIR "/usr/local/include/eigen3")
+set(EIGEN3_INCLUDE_DIR "/home/ubuntu/3rdparty/eigen-3.3.4")
 
 
 include_directories(include
@@ -47,11 +47,11 @@ add_executable(test_pkg test_pkg.cpp
 target_link_libraries(test_pkg
   ${catkin_LIBRARIES}
   /usr/lib/x86_64-linux-gnu/libcxsparse.so.3.1.4
-  /usr/local/lib/libg2o_core.so
-  /usr/local/lib/libg2o_stuff.so
-  /usr/local/lib/libg2o_csparse_extension.so
-  /usr/local/lib/libg2o_types_slam2d.so
-  /usr/local/lib/libg2o_types_slam3d.so
-  /usr/local/lib/libg2o_solver_csparse.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_core.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_stuff.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_csparse_extension.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_types_slam2d.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_types_slam3d.so
+  /home/ubuntu/3rdparty/g2o-20170730/lib/libg2o_solver_csparse.so
 )
 

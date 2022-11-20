@@ -22,7 +22,7 @@ enable_MA: true
 enable_elevation: false
 enable_ackerman: true
 enable_imu: true
-enable_velodyne: true
+enable_velodyne: false
 WO_step: 0.3
 GPS_step: 0
 VO_step: 4.940656458412465e-324

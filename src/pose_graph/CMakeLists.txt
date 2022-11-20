@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(pose_graph)
 
-# SET(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic")
 
 add_definitions(-std=c++11)
@@ -42,7 +41,7 @@ include_directories(
   ${Boost_INCLUDE_DIR}
   ${PCL_INCLUDE_DIRS}
 )
-message(status ": ${YAML_CPP_INCLUDE_DIR}")
+# message(status ": ${YAML_CPP_INCLUDE_DIR}")
 
 
 
